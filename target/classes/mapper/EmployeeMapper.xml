@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.can.mapper.EmployeeMapper">
+
+    <insert id="putEmployee" parameterType="com.can.pojo.Employee">
+        insert into mybatis.employee(lastName,email,gender,DepartmentName)
+        values (#{lastName},#{email},#{gender},#{departmentName})
+    </insert>
+
+    <update id="updateEmployee" parameterType="com.can.pojo.Employee">
+        update mybatis.employee
+        set lastName = #{lastName}, email = #{email}, gender = #{gender}, departmentName = #{departmentName}
+        where id = #{id}
+    </update>
+
+    <select id="getEmployees" resultType="employee">
+        select * from mybatis.employee
+    </select>
+
+    <select id="getEmployeeById" parameterType="Integer" resultType="employee">
+        select * from mybatis.employee where id = #{id}
+    </select>
+
+    <delete id="removeById" parameterType="Integer">
+        delete
+        from mybatis.employee
+        where id = #{id}
+    </delete>
+</mapper>
