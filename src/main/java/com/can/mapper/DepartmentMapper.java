@@ -10,5 +10,5 @@ import java.util.List;
 @Mapper
 public interface DepartmentMapper {
     List<Department> getDepartments();
-    public Department getDepartmentById(int id);
+    public Department getDepartmentById(Long id);
 }

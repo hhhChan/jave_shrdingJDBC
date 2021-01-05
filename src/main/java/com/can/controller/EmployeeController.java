@@ -17,15 +17,11 @@ import java.util.Collection;
 @Controller
 public class EmployeeController {
 
-    //@Autowired
-    //EmployeeDao employeeDao;
-    //@Autowired
-   // DepartmentDao departmentDao;
     @Autowired
     DepartmentServiceImpl departmentServiceImpl;
-
     @Autowired
     EmployeeServiceImpl employeeServiceImpl;
+
     @RequestMapping("/emps")
     public String list(Model model){
         Collection<Employee> employees = employeeServiceImpl.getEmployees();
@@ -47,8 +43,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/emps/{id}")
-    public String toUpdateEmp(@PathVariable("id")Integer id, Model model){
-        Employee employee = employeeServiceImpl.getEmployeeById(id);
+    public String toUpdateEmp(@PathVariable("id")long id, Model model){
+        Employee employee = employeeServiceImpl.getEmployeeById((Long)id);
         Collection<Department> departments = departmentServiceImpl.getDepartments();
         model.addAttribute("departments", departments);
         model.addAttribute("emp", employee);
@@ -62,8 +58,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/emps/delemp/{id}")
-    public String deleteEmp(@PathVariable("id") int id){
-        employeeServiceImpl.delete(id);
+    public String deleteEmp(@PathVariable("id") long id){
+        employeeServiceImpl.delete((long)id);
         return "redirect:/emps";
     }
 }

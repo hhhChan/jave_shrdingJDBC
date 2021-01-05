@@ -10,7 +10,7 @@ public interface EmployeeService {
 
     public Collection<Employee> getEmployees();
 
-    public Employee getEmployeeById( Integer id);
+    public Employee getEmployeeById(Long id);
 
-    public void delete( Integer id);
+    public void delete(Long id);
 }

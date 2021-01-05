@@ -8,11 +8,11 @@
 
 
     <select id="getDepartments" resultType="Department">
-        select * from mybatis.department
+        select * from department
     </select>
 
-    <select id="getDepartmentById" parameterType="Integer" resultType="Department">
-        select * from mybatis.department where id = #{id}
+    <select id="getDepartmentById" parameterType="Long" resultType="Department">
+        select * from department where id = #{id}
     </select>
 
 </mapper>

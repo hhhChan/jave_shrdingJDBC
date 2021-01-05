@@ -8,5 +8,5 @@ public interface DepartmentService {
 
     public List<Department> getDepartments();
 
-    public Department getDepartmentById( Integer id);
+    public Department getDepartmentById( Long id);
 }

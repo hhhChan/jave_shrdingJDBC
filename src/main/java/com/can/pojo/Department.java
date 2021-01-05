@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Department {
 
-    private  Integer id;
+    private  Long id;
     private  String departmentName;
 
 }

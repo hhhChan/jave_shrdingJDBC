@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Employee {
 
-    private Integer id;
+    private Long id;
     private String lastName;
     private String email;
     private Integer gender;//0 女 1 男

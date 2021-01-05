@@ -6,7 +6,7 @@
 <mapper namespace="com.can.mapper.UserMapper">
 
     <select id="queryUserByName" parameterType="String" resultType="User">
-        select * from mybatis.user where name = #{name}
+        select * from user where name = #{name}
     </select>
 
 </mapper>
