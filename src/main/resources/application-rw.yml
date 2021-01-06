@@ -46,40 +46,10 @@ sharding:
 
 
       sharding:
-        default-data-source-name: ds_0
+        default-data-source-name: ds0
       props:
         sql.show: true
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-
-
-    #spring:
-# datasource:
-#   username: root
-#   password: 123456
-#  url: jdbc:mysql://localhost:3306/mybatis?serverTimezone=UTC&userUnicode=true&characterEncoding=utf-8
-#  driver-class-name: com.mysql.cj.jdbc.Driver
-#  type: com.alibaba.druid.pool.DruidDataSource
-
-    #springboot默认不注入这些属性值
-    #druid数据源配置
-#   initiasize: 5
-#  minIdle: 5
-#  maxActive: 20
-#  maxWait: 60000
-# timeBetweenEvictionRunsMillis: 60000
-# minEvictableIdleTimeMillis: 300000
-#  validationQuery: SELECT 1FROM DUAL
-#  testWhileIdle: true
-#  testOnBorrow: false
-#  testOnReturn: false
-# poolPreparedStatements: true
-
-# filters: stat,wall,log4j
-# maxPoolPreparedStatementPerConnectionSize: 20
-#useGlobalDataSourceStat: true
-#connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
-

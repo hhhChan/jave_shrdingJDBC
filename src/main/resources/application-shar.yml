@@ -4,8 +4,8 @@ spring:
 sharding:
   jdbc:
     datasource:
-      names: ds0-master,ds1-master,ds0-slave,ds1-slave
-      ds0-master:
+      names: ds0,ds1,ds0-slave,ds1-slave
+      ds0:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class: com.mysql.jdbc.Driver
         url: jdbc:mysql://192.168.1.77:3306/db0?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
@@ -13,7 +13,7 @@ sharding:
         password: xin123456
         maxPoolSize: 50
         minPoolSize: 1
-      ds1-master:
+      ds1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class: com.mysql.jdbc.Driver
         url: jdbc:mysql://192.168.1.77:3306/db1?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
@@ -38,48 +38,21 @@ sharding:
         maxPoolSize: 50
         minPoolSize: 1
     config:
-      masterslave: # 配置读写分离
-        load-balance-algorithm-type: round_robin # 配置从库选择策略，提供轮询与随机，这里选择用轮询//random 随机 //round_robin 轮询
-        name: db1s1
-        master-data-source-name: ds0-master
-        slave-data-source-names: ds0-slave
-
-
       sharding:
-        default-data-source-name: ds_0
+        tables:
+          employee:
+            actual-data-nodes: ds$->{0..1}.employee
+            #key-generator:
+              #column: id
+              #type: SNOWFLAKE
+            database-strategy:
+              standard:
+                sharding-column: id
+                preciseAlgorithmClassName: com.can.sharding.OrderIdShardingAlgorithm
+        default-data-source-name: ds0
       props:
         sql.show: true
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-
-
-    #spring:
-# datasource:
-#   username: root
-#   password: 123456
-#  url: jdbc:mysql://localhost:3306/mybatis?serverTimezone=UTC&userUnicode=true&characterEncoding=utf-8
-#  driver-class-name: com.mysql.cj.jdbc.Driver
-#  type: com.alibaba.druid.pool.DruidDataSource
-
-    #springboot默认不注入这些属性值
-    #druid数据源配置
-#   initiasize: 5
-#  minIdle: 5
-#  maxActive: 20
-#  maxWait: 60000
-# timeBetweenEvictionRunsMillis: 60000
-# minEvictableIdleTimeMillis: 300000
-#  validationQuery: SELECT 1FROM DUAL
-#  testWhileIdle: true
-#  testOnBorrow: false
-#  testOnReturn: false
-# poolPreparedStatements: true
-
-# filters: stat,wall,log4j
-# maxPoolPreparedStatementPerConnectionSize: 20
-#useGlobalDataSourceStat: true
-#connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
-
