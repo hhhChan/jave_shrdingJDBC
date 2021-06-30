@@ -16,6 +16,15 @@
     <artifactId>can</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <aspect-version>1.8.0</aspect-version>
+        <jedis.version>3.1.0</jedis.version>
+        <guava.version>27.1-jre</guava.version>
+        <caffeine.version>2.6.2</caffeine.version>
+        <lang3.version>3.0</lang3.version>
+    </properties>
+
+
     <dependencies>
         <!-- 引入shardingJDBC -->
         <!--  <dependency>
@@ -29,12 +38,52 @@
              <version>3.1.0</version>
          </dependency>
 
+        <!--<dependency>
+            <groupId>io.shardingsphere</groupId>
+            <artifactId>sharding-transaction-spring</artifactId>
+            <version>3.1.0</version>
+        </dependency> -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${lang3.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.dangdang</groupId>
             <artifactId>sharding-jdbc-self-id-generator</artifactId>
             <version>1.4.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+
+        <!-- mysql 和 druid -->
          <dependency>
              <groupId>mysql</groupId>
              <artifactId>mysql-connector-java</artifactId>
@@ -50,6 +99,12 @@
              <version>2.0.0</version>
          </dependency>
 
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
 
          <!-- web场景启动器 -->
         <dependency>
@@ -89,6 +144,17 @@
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-java8time</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspect-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspect-version}</version>
         </dependency>
 
         <!-- springboot单元测试 -->

@@ -23,7 +23,7 @@ public class SpringbootWebApplicationTests {
         }
         for (int i=0; i<10; i++) {
             Employee employee = new Employee();
-            employee.setId(a[i]);
+            employee.setId(a[i]+1);
             employee.setDepartmentName("教学楼" + (i%6 + 1));
             employee.setEmail("test"+ i +"@.com");
             employee.setGender(i%2);

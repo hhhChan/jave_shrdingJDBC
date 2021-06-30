@@ -10,7 +10,7 @@ import java.util.List;
 public interface EmployeeMapper {
     public List<Employee> getEmployees();
 
-    Employee getEmployeeById(long id);
+    public Employee getEmployeeById(long id);
     void updateEmployee(Employee employee);
     void removeById(long id);
 

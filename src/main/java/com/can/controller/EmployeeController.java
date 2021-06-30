@@ -1,5 +1,6 @@
 package com.can.controller;
 
+import com.can.annatations.CanLimiter;
 import com.can.pojo.Department;
 import com.can.pojo.Employee;
 import com.can.service.impl.DepartmentServiceImpl;
@@ -42,6 +43,7 @@ public class EmployeeController {
         return "redirect:/emps";
     }
 
+    @CanLimiter()
     @GetMapping("/emps/{id}")
     public String toUpdateEmp(@PathVariable("id")long id, Model model){
         Employee employee = employeeServiceImpl.getEmployeeById((Long)id);
