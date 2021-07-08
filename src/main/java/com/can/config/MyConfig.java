@@ -1,5 +1,6 @@
 package com.can.config;
 
+
 import com.dangdang.ddframe.rdb.sharding.id.generator.IdGenerator;
 import com.dangdang.ddframe.rdb.sharding.id.generator.self.CommonSelfIdGenerator;
 import com.github.benmanes.caffeine.cache.Caffeine;

@@ -70,7 +70,6 @@ public class CanAspest {
             }
             // 解析
             key = prefix + "::" + expression.getValue(context).toString();
-
             // 1、 判定缓存中是否存在
             //先一级缓存
             Cache.ValueWrapper valueWrapper = caffeine.get(key);

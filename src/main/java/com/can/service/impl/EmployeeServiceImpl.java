@@ -6,6 +6,8 @@ import com.can.mapper.EmployeeMapper;
 import com.can.pojo.Employee;
 import com.can.service.EmployeeService;
 import com.dangdang.ddframe.rdb.sharding.id.generator.IdGenerator;
+import com.sankuai.inf.leaf.common.Status;
+import com.sankuai.inf.leaf.service.SnowflakeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,6 +22,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeMapper employeeMapper;
     @Autowired
     private IdGenerator idGenerator;
+    @Autowired
+    private SnowflakeService snowflakeService;
     @Autowired
     private RedisTemplate redisTemplate;
 
@@ -40,7 +44,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @CacheEvict(value = "employee", key = "#employee.id")
     public void saveEmployee(Employee employee) {
         if (employee.getId() == null) {
-            employee.setId(idGenerator.generateId().longValue());
+            com.sankuai.inf.leaf.common.Result r =  snowflakeService.getId("id");
+            if(r.getStatus() != Status.SUCCESS) {
+                System.out.println("id创建失败");
+                return;
+            }
+            //employee.setId(idGenerator.generateId().longValue());
+            employee.setId(r.getId());
             int hashValue = Math.abs(employee.getId().hashCode());
             long index = (long) (hashValue % Math.pow(2, 32)); // 元素  和 数组的映射
             // 设置Redis里面二进制数据中的值，对应位置 为 1

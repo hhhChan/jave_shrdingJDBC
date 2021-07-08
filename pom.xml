@@ -22,6 +22,8 @@
         <guava.version>27.1-jre</guava.version>
         <caffeine.version>2.6.2</caffeine.version>
         <lang3.version>3.0</lang3.version>
+        <leaf.version>1.0.1-RELEASE</leaf.version>
+        <curator.version>3.2.1</curator.version>
     </properties>
 
 
@@ -70,6 +72,37 @@
             <artifactId>sharding-jdbc-self-id-generator</artifactId>
             <version>1.4.2</version>
         </dependency>
+
+        <!-- MT - leaf -->
+        <dependency>
+            <artifactId>leaf-boot-starter</artifactId>
+            <groupId>com.sankuai.inf.leaf</groupId>
+            <version>${leaf.version}</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.curator</groupId>-->
+<!--            <artifactId>curator-recipes</artifactId>-->
+<!--            <version>2.6.0</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>log4j</artifactId>-->
+<!--                    <groupId>log4j</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.curator</groupId>-->
+<!--            <artifactId>curator-recipes</artifactId>-->
+<!--            <version>${curator.version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.google.guava</groupId>
